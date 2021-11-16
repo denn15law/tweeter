@@ -5,6 +5,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: #db9200;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
