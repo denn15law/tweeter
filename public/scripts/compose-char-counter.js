@@ -5,6 +5,8 @@ $(document).ready(function () {
     const val = $(this).val().length;
     if (val > 140) {
       counter.css("color", "red");
+    } else {
+      counter.css("color", "black");
     }
   });
 });
