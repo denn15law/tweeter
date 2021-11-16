@@ -40,6 +40,10 @@
   margin: 0 10px;
 }
 
+.tweet-content p {
+  margin-left: 1em;
+}
+
 .tweet-footer {
   display: flex;
   justify-content: space-between;
