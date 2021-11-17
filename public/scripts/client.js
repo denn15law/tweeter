@@ -6,32 +6,7 @@
 
 //
 $(document).ready(function () {
-  //hardcoded tweet data
-  const data = [
-    {
-      user: {
-        name: "Newton",
-        avatars: "https://i.imgur.com/73hZDYK.png",
-        handle: "@SirIsaac",
-      },
-      content: {
-        text: "If I have seen further it is by standing on the shoulders of giants",
-      },
-      created_at: 1461116232227,
-    },
-    {
-      user: {
-        name: "Descartes",
-        avatars: "https://i.imgur.com/nlhLi3I.png",
-        handle: "@rd",
-      },
-      content: {
-        text: "Je pense , donc je suis",
-      },
-      created_at: 1461113959088,
-    },
-  ];
-
+  //populate tweet html with data
   const createTweetElement = (tweetData) => {
     const template = `
     <section class='tweets'>
@@ -55,10 +30,10 @@ $(document).ready(function () {
       </footer>
     </section>
     `;
-
     return template;
   };
 
+  //render tweets when given an array of tweets
   const renderTweets = function (tweets) {
     for (let tweet of tweets) {
       let $tweet = createTweetElement(tweet);
@@ -66,12 +41,22 @@ $(document).ready(function () {
     }
   };
 
-  renderTweets(data);
+  const loadTweets = $(function () {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+    }).then(function (tweets) {
+      renderTweets(tweets);
+    });
+  });
+
+  loadTweets();
+
+  // renderTweets(data);
 
   $("form").on("submit", function (event) {
     event.preventDefault();
     const tweetContent = $(this).serialize();
-    console.log(tweetContent);
 
     $.ajax({
       url: "/tweets",
