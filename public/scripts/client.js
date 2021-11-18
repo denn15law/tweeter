@@ -30,6 +30,8 @@ $(document).ready(function () {
       </footer>
     </section>
     `;
+    // return template;
+    // $("#tweets-container").prepend(template);
     return template;
   };
 
@@ -37,38 +39,38 @@ $(document).ready(function () {
   const renderTweets = function (tweets) {
     for (let tweet of tweets) {
       let $tweet = createTweetElement(tweet);
-      $("#tweets-container").append($tweet);
+      $("#tweets-container").prepend($tweet);
     }
   };
 
+  $("form").submit(function (event) {
+    event.preventDefault();
+    const text = $("#tweet-text").val();
+    let sendOK = true;
+    if (text === "") {
+      alert("Empty Message");
+      sendOK = false;
+    }
+    if (text.length > 140) {
+      alert("Message Exceeed Character Length");
+      sendOK = false;
+    }
+    const tweetContent = $(this).serialize();
+    if (sendOK) {
+      //posting tweets with ajax
+      $.ajax({
+        url: "/tweets",
+        method: "POST",
+        data: tweetContent,
+      }).then();
+    }
+  });
+
   const loadTweets = $(function () {
-    $.ajax({
-      url: "/tweets",
-      method: "GET",
-    }).then(function (tweets) {
+    //fetching tweets with ajax
+    $.ajax("/tweets", { method: "GET" }).then(function (tweets) {
       renderTweets(tweets);
     });
   });
-
   loadTweets();
-
-  // renderTweets(data);
-
-  $("form").on("submit", function (event) {
-    event.preventDefault();
-    const tweetContent = $(this).serialize();
-
-    $.ajax({
-      url: "/tweets",
-      method: "POST",
-      data: tweetContent,
-    })
-      .then(function (result) {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log("ajax error");
-        console.log(err);
-      });
-  });
 });
