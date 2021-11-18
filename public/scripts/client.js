@@ -93,8 +93,20 @@ $(document).ready(function () {
     });
   };
 
+  //Stretch: initially hide compose tweet area and show and focus on text box when click on compose tweet button in nav
+  $("#nav-btn").click(() => {
+    $(".new-tweet").slideToggle();
+    $("#tweet-text").focus();
+  });
+
+  $(".rotate").click(function () {
+    $(this).toggleClass("down");
+  });
+
   //hide alert initially
   $(".alert").hide();
+  //hide compose tweet section initially
+  $(".new-tweet").hide();
   //first time loading page
   loadTweets();
 });
