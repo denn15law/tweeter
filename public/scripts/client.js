@@ -10,24 +10,24 @@ $(document).ready(function () {
   const createTweetElement = (tweetData) => {
     const template = `
     <section class='tweets'>
-      <header class="tweet-header">
-        <div class="profile">
-          <img src=${tweetData.user.avatars}>
-          <h2 class="fullname">${tweetData.user.name}</h2>
-        </div>
-        <h2 class="username">${tweetData.user.handle}</h2>
-      </header>
-      <div class="tweet-content">
-        <p>${tweetData.content.text}</p>
-      </div>
-      <footer class="tweet-footer">
-        <p class="date-posted">${timeago.format(tweetData.created_at)}</p>
-        <div class="tweet-icons">
-          <i class="fas fa-solid fa-flag icon"></i>
-          <i class="fas fa-solid fa-retweet icon"></i>
-          <i class="fas fa-solid fa-heart icon"></i>
-        </div>
-      </footer>
+    <header class="tweet-header">
+    <div class="profile">
+    <img src=${tweetData.user.avatars}>
+    <h2 class="fullname">${tweetData.user.name}</h2>
+    </div>
+    <h2 class="username">${tweetData.user.handle}</h2>
+    </header>
+    <div class="tweet-content">
+    <p>${tweetData.content.text}</p>
+    </div>
+    <footer class="tweet-footer">
+    <p class="date-posted">${timeago.format(tweetData.created_at)}</p>
+    <div class="tweet-icons">
+    <i class="fas fa-solid fa-flag icon"></i>
+    <i class="fas fa-solid fa-retweet icon"></i>
+    <i class="fas fa-solid fa-heart icon"></i>
+    </div>
+    </footer>
     </section>
     `;
     // return template;
@@ -54,13 +54,19 @@ $(document).ready(function () {
 
     //if form is empty
     if (text === "") {
-      alert("Empty Message");
+      $(".alert-text").text("Error: Empty Tweet!");
+      $(".alert").slideDown();
+      $(".alert").delay(2500);
+      $(".alert").slideUp();
       sendOK = false;
     }
 
     //if form is over 140 characters
     if (text.length > 140) {
-      alert("Message Exceeed Character Length");
+      $(".alert-text").text("Error: Maximum Character Length Exceeded!");
+      $(".alert").slideDown();
+      $(".alert").delay(2500);
+      $(".alert").slideUp();
       sendOK = false;
     }
 
@@ -87,6 +93,8 @@ $(document).ready(function () {
     });
   };
 
+  //hide alert initially
+  $(".alert").hide();
   //first time loading page
   loadTweets();
 });

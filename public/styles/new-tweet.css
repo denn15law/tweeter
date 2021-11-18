@@ -16,11 +16,29 @@ form textarea {
   margin-bottom: 0.5em;
 }
 
-.new-tweet div {
+.new-tweet .form-control {
   display: flex;
   justify-content: space-between;
 }
 
 .counter {
   font-family: "Bungee", cursive;
+}
+
+.alert {
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  background-color: #f14040;
+  display: flex;
+  height: 50px;
+  vertical-align: middle;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert-text {
+  padding: 10px;
 }
