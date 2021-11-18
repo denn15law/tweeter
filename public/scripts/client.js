@@ -43,18 +43,28 @@ $(document).ready(function () {
     }
   };
 
+  //event handler for form submission
   $("form").submit(function (event) {
+    //prevent default
     event.preventDefault();
+
+    //form validation
     const text = $("#tweet-text").val();
     let sendOK = true;
+
+    //if form is empty
     if (text === "") {
       alert("Empty Message");
       sendOK = false;
     }
+
+    //if form is over 140 characters
     if (text.length > 140) {
       alert("Message Exceeed Character Length");
       sendOK = false;
     }
+
+    //serialize tweet content
     const tweetContent = $(this).serialize();
     if (sendOK) {
       //posting tweets with ajax
@@ -62,15 +72,21 @@ $(document).ready(function () {
         url: "/tweets",
         method: "POST",
         data: tweetContent,
-      }).then();
+      }).then(() => {
+        loadTweets();
+        $("#tweet-text").val("");
+        $(".counter").val(140);
+      });
     }
   });
 
-  const loadTweets = $(function () {
+  const loadTweets = function () {
     //fetching tweets with ajax
     $.ajax("/tweets", { method: "GET" }).then(function (tweets) {
       renderTweets(tweets);
     });
-  });
+  };
+
+  //first time loading page
   loadTweets();
 });
