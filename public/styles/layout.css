@@ -35,3 +35,17 @@ main {
 .container {
   margin: auto;
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .main-container {
+    flex-direction: row;
+  }
+  .container {
+    padding: 200px 50px;
+  }
+}
