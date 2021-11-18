@@ -25,10 +25,41 @@ nav div p {
   margin-bottom: 5px;
 }
 
-nav div i {
+nav i {
   color: red;
+  animation: bounce 1.5s infinite;
 }
 
-nav div i:hover {
-  transform: translateY(10px);
+nav button {
+  background-color: #4056a1;
+  border: none;
+}
+
+nav button:hover {
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  20%,
+  50%,
+  80%,
+  to {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  70% {
+    transform: translateY(-7px);
+  }
+  90% {
+    transform: translateY(-3px);
+  }
+}
+
+@media screen and (max-width: 766px) {
+  nav {
+    background-color: #db9200;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  }
 }
