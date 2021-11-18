@@ -19,4 +19,12 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## ScreenShots
 
-![""]()
+!["Tweeter Home Page For Desktop/Tablets (768px and above)"](https://github.com/denn15law/tweeter/blob/master/docs/TweeterHomePage.png)
+
+!["Tweeter Mobile Design Using media query and Flexbox"](https://github.com/denn15law/tweeter/blob/master/docs/TweeterMobile.png)
+
+!["Sample Tweet showing box shadow when hovering over and icons changing color"](https://github.com/denn15law/tweeter/blob/master/docs/TweeterSampleTweet.png)
+
+!["Error Message shown with form validation upon submission"](https://github.com/denn15law/tweeter/blob/master/docs/TweeterError.png)
+
+!["Tweet Text Area with Character Counting Feature"](https://github.com/denn15law/tweeter/blob/master/docs/TweeterCharCheck.png)
